@@ -5,20 +5,24 @@ import usePayWithMonnifyPayment from './payWithMonnify'
 
 type MonnifyPaymentProviderProps = {
   children: JSX.Element
-  onComplete: () => void
-  onPaymentClose: () => void
+  onLoadStart: any
+  onLoadComplete: any
+  onComplete: any
+  onClose: any
   options: MonnifyProps
 }
 
 const MonnifyPaymentProvider = ({
   children,
+  onLoadStart,
+  onLoadComplete,
   onComplete,
-  onPaymentClose,
+  onClose,
   options,
 }: MonnifyPaymentProviderProps): JSX.Element => {
   const initializePayment = usePayWithMonnifyPayment(options)
   return (
-    <MonnifyPaymentContext.Provider value={{ initializePayment, onComplete, onPaymentClose }}>
+    <MonnifyPaymentContext.Provider value={{ initializePayment, onComplete, onLoadStart, onLoadComplete, onClose }}>
       {children}
     </MonnifyPaymentContext.Provider>
   )

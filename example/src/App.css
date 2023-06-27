@@ -1,0 +1,62 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  place-content: center;
+}
+
+
+  .Main{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  button {
+    color: #fff;
+    background-color: #00b8c2 !important;
+    border-color: #00b8c2;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100% !important;
+    cursor: pointer !important;
+  }
+  
+  button:hover {
+    color: #fff;
+    background-color: #1595c4 !important;
+    border-color: #1595c4;
+    cursor: pointer !important;
+  }
+  button.btn {
+    background-color: #f0aa22 !important; /* Green */
+    border-color: #f0aa22;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  button.btn:hover {
+    color: #fff;
+    background-color: #f05822  !important;
+    border-color: #f05822 ;
+    cursor: pointer !important;
+  }
+  header{
+    display:flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+  header a{
+    color: #1595c4 !important;
+    font-size: 35px !important;
+  }

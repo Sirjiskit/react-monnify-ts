@@ -11,8 +11,10 @@ const componentProps = {
   options: config as any,
   className: 'btn',
   text: 'Make payment',
-  onComplete: () => null,
-  onPaymentClose: () => null,
+  onLoadStart: null,
+  onLoadComplete: null,
+  onComplete: null,
+  onClose: null,
 }
 
 describe('<MonnifyPaymentButton />', () => {

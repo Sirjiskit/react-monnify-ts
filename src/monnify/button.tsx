@@ -6,21 +6,28 @@ type MonnifyPaymentButtonProps = {
   text?: string
   className?: string
   children?: React.ReactNode
-  onComplete?: () => void
-  onPaymentClose?: () => void
+  onLoadStart?: any
+  onLoadComplete?: any
+  onComplete?: any
+  onClose?: any
   options: MonnifyProps
 }
 const MonnifyPaymentButton = ({
   text,
   className,
   children,
+  onLoadStart,
+  onLoadComplete,
   onComplete,
-  onPaymentClose,
+  onClose,
   options,
 }: MonnifyPaymentButtonProps): JSX.Element => {
   const initializePayment = usePayWithMonnifyPayment(options)
   return (
-    <button className={className} onClick={(): void => initializePayment(onComplete, onPaymentClose)}>
+    <button
+      className={className}
+      onClick={(): void => initializePayment(onLoadStart, onLoadComplete, onComplete, onClose)}
+    >
       {text || children}
     </button>
   )

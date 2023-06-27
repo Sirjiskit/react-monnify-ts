@@ -2,14 +2,18 @@ import { createContext } from 'react'
 
 type MonnifyPaymentContextProps = {
   initializePayment: any
-  onComplete: () => void
-  onPaymentClose: () => void
+  onLoadStart: any
+  onLoadComplete: any
+  onComplete: any
+  onClose: any
 }
 
 const MonnifyPaymentContext = createContext<MonnifyPaymentContextProps>({
   initializePayment: null,
-  onComplete: () => null,
-  onPaymentClose: () => null,
+  onLoadStart: null,
+  onLoadComplete: null,
+  onComplete: null,
+  onClose: null,
 })
 
 export default MonnifyPaymentContext

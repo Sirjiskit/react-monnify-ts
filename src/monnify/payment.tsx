@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/display-name */
 /* eslint-disable no-empty-pattern */
 import { FunctionComponentElement, forwardRef, useContext } from 'react'
@@ -8,25 +9,42 @@ import React from 'react'
 
 type PayWIthMonnifyPaymentProps = {
   children: any
-  onComplete?: () => void
-  onPaymentClose?: () => void
+  onLoadStart?: any
+  onLoadComplete?: any
+  onComplete?: any
+  onClose?: any
   options: MonnifyProps
 }
 const PayWIthMonnify = ({ children, ref }: { children: any; ref: any }): FunctionComponentElement<any> => {
-  const { initializePayment, onComplete, onPaymentClose } = useContext(MonnifyPaymentContext)
-  const completeInitializePayment = (): void => initializePayment(onComplete, onPaymentClose)
+  const { initializePayment, onLoadStart, onLoadComplete, onComplete, onClose } = useContext(MonnifyPaymentContext)
+  const completeInitializePayment = (): void => initializePayment(onLoadStart, onLoadComplete, onComplete, onClose)
   return children({ initializePayment: completeInitializePayment, ref })
 }
 
 const PayWIthMonnifyPayment = forwardRef(
   (
-    { children, onComplete: paraSuccess, onPaymentClose: paraClose, options }: PayWIthMonnifyPaymentProps,
+    {
+      children,
+      onLoadStart: paraLoadStart,
+      onLoadComplete: paraLoadComplete,
+      onComplete: paraComplete,
+      onClose: paraClose,
+      options,
+    }: PayWIthMonnifyPaymentProps,
     ref: any,
   ): JSX.Element => {
-    const onComplete = paraSuccess ? paraSuccess : (): any => null
-    const onPaymentClose = paraClose ? paraClose : (): any => null
+    const onLoadStart = paraLoadStart ? paraLoadStart : (_e: any): any => null
+    const onLoadComplete = paraLoadComplete ? paraLoadComplete : (_e: any): any => null
+    const onComplete = paraComplete ? paraComplete : (_e: any): any => null
+    const onClose = paraClose ? paraClose : (_e: any): any => null
     return (
-      <MonnifyPaymentProvider options={options} onComplete={onComplete} onPaymentClose={onPaymentClose}>
+      <MonnifyPaymentProvider
+        options={options}
+        onLoadStart={onLoadStart}
+        onLoadComplete={onLoadComplete}
+        onComplete={onComplete}
+        onClose={onClose}
+      >
         <PayWIthMonnify ref={ref}>{children}</PayWIthMonnify>
       </MonnifyPaymentProvider>
     )

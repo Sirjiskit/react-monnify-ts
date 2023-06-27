@@ -9,8 +9,10 @@ jest.mock('../src/monnify/loadSDK')
 const componentProps = {
   options: config as any,
   text: 'Make payment',
-  onSuccess: () => null,
-  onClose: () => null,
+  onLoadStart: null,
+  onLoadComplete: null,
+  onComplete: null,
+  onClose: null,
 }
 
 describe('<MonnifyPaymentProvider />', () => {

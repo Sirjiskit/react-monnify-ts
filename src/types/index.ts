@@ -90,3 +90,42 @@ export type MonnifySplitOptions = {
    */
   splitAmount?: number
 }
+export type CompleteResponesProps = {
+  /**
+   * Status FAILED,SUCCESS
+   */
+  status: 'SUCCESS' | 'FAILED'
+  message: string
+  transactionReference: any
+  paymentReference: any
+  authorizedAmount: number
+  redirectUrl: any
+  paidOn: Date
+  payload: {
+    apiKey: string
+    amount: number
+    currency: string
+    paymentReference: string
+    paymentDescription: string
+    transactionReference: any
+    accessToken: null
+    merchant: {
+      name: string
+      logo: any
+    }
+    enabledPaymentMethods: Array<string>
+    customer: {
+      fullName: string
+      email: string
+      mobileNumber: string
+    }
+    totalPayable: any
+  }
+}
+export type UserCancelledResponseProps = {
+  redirectUrl: any
+  responseCode: 'USER_CANCELLED'
+  paymentStatus: 'USER_CANCELLED'
+  responseMessage: string
+  authorizedAmount: any
+}

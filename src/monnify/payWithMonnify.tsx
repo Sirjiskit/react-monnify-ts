@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { MonnifyProps } from '../types'
 import { loadMonnifySDK } from './loadSDK'
@@ -5,7 +6,7 @@ import useMonnifyScript from './script'
 
 export default function usePayWithMonnifyPayment(
   options: MonnifyProps,
-): (onComplete?: () => void, onPaymentClose?: () => void) => void {
+): (onLoadStart?: any, onLoadComplete?: any, onComplete?: any, onClose?: any) => void {
   const [scriptLoaded, scriptError] = useMonnifyScript(options.isTestMode)
   const {
     isTestMode,
@@ -23,7 +24,7 @@ export default function usePayWithMonnifyPayment(
     incomeSplitConfig,
   } = options
 
-  const clean = (obj: any): any => {
+  const formatPayload = (obj: any): any => {
     // tslint:disable-next-line:prefer-const
     for (const propName in obj) {
       if (obj[propName] === null || obj[propName] === undefined) {
@@ -33,31 +34,35 @@ export default function usePayWithMonnifyPayment(
     return obj
   }
 
-  function initializePayment(onComplete?: () => void, onPaymentClose?: () => void): void {
+  function initializePayment(onLoadStart: any, onLoadComplete: any, onComplete?: any, onClose?: any): void {
     if (scriptError) {
       throw new Error('Unable to load monnify inline script')
     }
 
     if (scriptLoaded) {
       const monnifyPaymentArgs: Record<string, any> = {
-        onComplete: onComplete ? onComplete : (): any => null,
-        onClose: onPaymentClose ? onPaymentClose : (): any => null,
+        onComplete: onComplete ? onComplete : (_e: any): any => null,
+        onClose: onClose ? onClose : (_e: any): any => null,
+        onLoadStart: onLoadStart ? onLoadStart : (_e: any): any => null,
+        onLoadComplete: onLoadComplete ? onLoadComplete : (_e: any): any => null,
         isTestMode,
         apiKey,
         contractCode,
         amount,
         reference,
         currency: currency || 'NGN',
+        customerName: customerName || '',
         customerFullName: customerName || '',
         customerEmail: customerEmail || '',
         customerMobileNumber: customerPhoneNumber || '',
+        customerPhoneNumber: customerPhoneNumber || '',
         paymentDescription: paymentDescription || '',
         redirectUrl: redirectUrl || '',
         metadata: metadata || {},
         incomeSplitConfig: incomeSplitConfig || null,
         'data-custom-button': options['data-custom-button'] || '',
       }
-      loadMonnifySDK(clean(monnifyPaymentArgs))
+      loadMonnifySDK(formatPayload(monnifyPaymentArgs))
     }
   }
 

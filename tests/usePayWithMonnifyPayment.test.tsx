@@ -23,13 +23,17 @@ describe('usePayWithMonnifyPayment()', () => {
     rerender()
 
     const onComplete = jest.fn()
-    const onPaymentClose = jest.fn()
+    const onClose = jest.fn()
+    const onLoadStart = jest.fn()
+    const onLoadComplete = jest.fn()
     act(() => {
-      result.current(onComplete, onPaymentClose)
+      result.current(onLoadStart, onLoadComplete, onComplete, onClose)
     })
 
     expect(onComplete).toHaveBeenCalledTimes(0)
-    expect(onPaymentClose).toHaveBeenCalledTimes(0)
+    expect(onClose).toHaveBeenCalledTimes(0)
+    expect(onLoadStart).toHaveBeenCalledTimes(0)
+    expect(onLoadComplete).toHaveBeenCalledTimes(0)
     expect(loadMonnifySDK).toHaveBeenCalledTimes(1)
   })
 
