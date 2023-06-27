@@ -1,4 +1,4 @@
-# monnify-ts 0.0.4
+# react-monnify-ts 0.0.4
 monnify payment gateway library for reactJS both JavaScript and TypeScript
 ## Demo
 
