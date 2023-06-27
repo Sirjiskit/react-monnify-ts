@@ -1,6 +1,6 @@
 {
-  "name": "monnify-ts",
-  "version": "1.0.2",
+  "name": "react-monnify-ts",
+  "version": "0.0.1",
   "description": "ReactJS typescript support for monnify payment gateway",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -20,8 +20,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sirjiskit/monnify-ts.git"
+    "url": "git+https://github.com/Sirjiskit/react-monnify-ts.git"
   },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "keywords": [
     "react",
     "Javascript",
@@ -40,9 +45,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Sirjiskit/monnify-ts/issues"
+    "url": "https://github.com/Sirjiskit/react-monnify-ts/issues"
   },
-  "homepage": "https://github.com/Sirjiskit/monnify-ts#readme",
+  "homepage": "https://github.com/Sirjiskit/react-monnify-ts#readme",
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.2",

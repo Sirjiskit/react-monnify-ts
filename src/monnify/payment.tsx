@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 /* eslint-disable no-empty-pattern */
 import { FunctionComponentElement, forwardRef, useContext } from 'react'
-import { MonnifyProps } from '../types/types'
+import { MonnifyProps } from '../types'
 import MonnifyPaymentContext from './context'
 import MonnifyPaymentProvider from './provider'
 import React from 'react'

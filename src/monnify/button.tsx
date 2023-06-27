@@ -1,5 +1,5 @@
 import React from 'react'
-import { MonnifyProps } from '../types/types'
+import { MonnifyProps } from '../types'
 import usePayWithMonnifyPayment from './payWithMonnify'
 
 type MonnifyPaymentButtonProps = {
